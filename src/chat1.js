@@ -4,8 +4,16 @@ const input = document.querySelector('.chat__input');
 const output = document.querySelector('.chat__output');
 const chat = document.querySelector('.chat');
 const now = new Date().getTime();
-const username = ['user', now].join('-');
 
+
+let userName = () => {
+  let heroes = ['Superhealer','tank007','krasotochka','lodossteam','GoOdHuNtEr','vsemkonets','SlavaPanchenko'];
+  let name = heroes[Math.floor(Math.random() * heroes.length)];
+  console.log(name);
+  return name;
+};
+
+const username = ['user', now].join('-');
 //let sendChat = function () {};
 //let checkSubmit =function(){};
 
@@ -20,9 +28,7 @@ const ChatEngine = ChatEngineCore.create(
   },
 );
 
-ChatEngine.connect(username, {
-  signedOnTime: now,
-}, 'auth-key');
+ChatEngine.connect(username, 'auth-key');
 
 ChatEngine.on('$.ready', () => {
   window.sendChat = function (e) {
