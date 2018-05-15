@@ -9,11 +9,11 @@
 <body>
      <div class='container'>
          <div class='hp-bar'></div>
-         <form class='chat'>
+         <div class='chat'>
              <div class='chat__output'></div>
-            <input type="text" class='chat__input'> 
-         </form>
+            <input type="text" class='chat__input message' onkeypress="checkSubmit(event)"> 
+            <button class="chat__submit" type="submit" onclick="sendChat()"></button>
+         </div>
      </div>
-     <script src="https://cdn.jsdelivr.net/npm/chat-engine@0.8.4/dist/chat-engine.min.js"></script>
 </body>
 </html>
