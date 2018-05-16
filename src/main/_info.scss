@@ -5,6 +5,9 @@
   height: 100px;
   width: 300px;
   &__hp-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
     background: url("images/hp_bar.png") no-repeat;
     background-size: contain;
     height: 100px;
@@ -17,23 +20,30 @@
     width: 60px;
     top: 11px;
     left: 12px;
-    .girl_draenei {
+    &_girl_draenei {
       background: url("images/avatars/girl_draenei.jpg") no-repeat;
+      background-size: contain;
+
     }
-    .girl_violet_hair {
+    &_girl_violet-hair {
       background: url("images/avatars/girl_violet_hair.jpg") no-repeat;
+      background-size: contain;
     }
-    .girl_white_hair {
+    &_girl_white-hair {
       background: url("images/avatars/girl_white_hair.jpg") no-repeat;
+      background-size: contain;
     }
-    .goblin {
+    &_goblin {
       background: url("images/avatars/goblin.jpg") no-repeat;
+      background-size: contain;
     }
-    .man_draenei {
+    &_man_draenei {
       background: url("images/avatars/man_draenei.png") no-repeat;
+      background-size: contain;
     }
-    .troll {
+    &_troll {
       background: url("images/avatars/troll.jpg") no-repeat;
+      background-size: contain;
     }
   }
 }

@@ -2,7 +2,8 @@ import ChatEngineCore from 'chat-engine';
 
 const input = document.querySelector('.chat__input');
 const output = document.querySelector('.chat__output');
-const infoAvatar = document.querySelector('.info__avatar');
+const info = document.querySelector('.info');
+
 const getName = () => {
   const heroes = ['Superhealer', 'tank007', 'krasotochka', 'lodossteam', 'GoOdHuNtEr', 'vsemkonets', 'SlavaPanchenko'];
   return heroes[Math.floor(Math.random() * heroes.length)];
@@ -14,14 +15,9 @@ const getColor = () => {
 };
 
 const getAvatar = () => {
-  const avatars = ['girl_draenei', 'girl_violet_hair', 'girl_white_hair', 'goblin', 'man_draenei', 'troll'];
+  const avatars = ['girl_draenei', 'girl_violet-hair', 'girl_white-hair', 'goblin', 'man_draenei', 'troll'];
   return avatars[Math.floor(Math.random() * avatars.length)];
 };
-
-
-// const username = ['user', now].join('-');
-// let sendChat = function () {};
-// let checkSubmit =function(){};
 
 const ChatEngine = ChatEngineCore.create(
   {
@@ -40,7 +36,10 @@ ChatEngine.connect(getName(), {
 });
 
 ChatEngine.on('$.ready', (data) => {
-  infoAvatar.classList.add(data.me.state.avatar);
+  const infoAvatar = document.createElement('div');
+  infoAvatar.classList.add('info__avatar', `info__avatar_${data.me.state.avatar}`);
+  info.appendChild(infoAvatar);
+
   window.sendChat = function (e) {
     ChatEngine.global.emit('message', {
       text: input.value,
@@ -66,7 +65,7 @@ ChatEngine.on('$.ready', (data) => {
     // infoAvatar.classList.add(payload.sender.state.avatar);
   });
 
-  ChatEngine.global.onAny((event, data) => {
+  ChatEngine.global.onAny((event) => {
     console.info(event, data);
   });
 });
