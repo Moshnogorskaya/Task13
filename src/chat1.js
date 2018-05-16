@@ -82,9 +82,9 @@ ChatEngine.on('$.ready', (data) => {
   ChatEngine.global.on('message', (payload) => {
     const date = new Date();
     const div = document.createElement('p');
-    div.innerHTML = `${date.getHours()}:${date.getMinutes()} [${
-      payload.sender.uuid
-    }]: ${payload.data.text}`;
+    div.innerHTML = `${date.toLocaleTimeString()} [${payload.sender.uuid}]: ${
+      payload.data.text
+    }`;
     div.style.color = payload.sender.state.color;
     output.appendChild(div);
   });
