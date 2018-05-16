@@ -2,8 +2,7 @@ import ChatEngineCore from 'chat-engine';
 
 const input = document.querySelector('.chat__input');
 const output = document.querySelector('.chat__output');
-const chat = document.querySelector('.chat');
-const now = new Date().getTime();
+const infoAvatar = document.querySelector('.info__avatar');
 const getName = () => {
   const heroes = ['Superhealer', 'tank007', 'krasotochka', 'lodossteam', 'GoOdHuNtEr', 'vsemkonets', 'SlavaPanchenko'];
   return heroes[Math.floor(Math.random() * heroes.length)];
@@ -15,6 +14,8 @@ const getColor = () => {
 };
 
 const getAvatar = () => {
+  const avatars = ['girl_draenei', 'girl_violet_hair', 'girl_white_hair', 'goblin', 'man_draenei', 'troll'];
+  return avatars[Math.floor(Math.random() * avatars.length)];
 };
 
 
@@ -33,13 +34,13 @@ const ChatEngine = ChatEngineCore.create(
   },
 );
 
-ChatEngine.connect(
-  getName(), {
-    color: getColor(),
-  },
-);
+ChatEngine.connect(getName(), {
+  color: getColor(),
+  avatar: getAvatar(),
+});
 
-ChatEngine.on('$.ready', () => {
+ChatEngine.on('$.ready', (data) => {
+  infoAvatar.classList.add(data.me.state.avatar);
   window.sendChat = function (e) {
     ChatEngine.global.emit('message', {
       text: input.value,
@@ -62,6 +63,7 @@ ChatEngine.on('$.ready', () => {
     div.innerHTML = `${date.getHours()}:${date.getMinutes()} [${payload.sender.uuid}]: ${payload.data.text}`;
     div.style.color = payload.sender.state.color;
     output.appendChild(div);
+    // infoAvatar.classList.add(payload.sender.state.avatar);
   });
 
   ChatEngine.global.onAny((event, data) => {
