@@ -1,0 +1,39 @@
+.info {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  height: 100px;
+  width: 300px;
+  &__hp-bar {
+    background: url("images/hp_bar.png") no-repeat;
+    background-size: contain;
+    height: 100px;
+    width: 300px;
+  }
+  &__avatar {
+    position: absolute;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    top: 11px;
+    left: 12px;
+    .girl_draenei {
+      background: url("images/avatars/girl_draenei.jpg") no-repeat;
+    }
+    .girl_violet_hair {
+      background: url("images/avatars/girl_violet_hair.jpg") no-repeat;
+    }
+    .girl_white_hair {
+      background: url("images/avatars/girl_white_hair.jpg") no-repeat;
+    }
+    .goblin {
+      background: url("images/avatars/goblin.jpg") no-repeat;
+    }
+    .man_draenei {
+      background: url("images/avatars/man_draenei.png") no-repeat;
+    }
+    .troll {
+      background: url("images/avatars/troll.jpg") no-repeat;
+    }
+  }
+}

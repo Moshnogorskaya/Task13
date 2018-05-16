@@ -15,12 +15,6 @@ const getColor = () => {
 };
 
 const getAvatar = () => {
-  const avatars = ['url("https://orig00.deviantart.net/2326/f/2012/110/c/3/new_tera_avatar_elf_slayer_by_mizukoiuchi-d4x09qp.jpg")',
-    'url("http://forum.illyriad.co.uk/uploads/971/elvenMALE02.jpg")',
-    'url("https://pre00.deviantart.net/8ef2/th/pre/f/2012/037/4/4/elf_child_by_sakimichan-d4oxa56.jpg")',
-    'url("https://cdna.artstation.com/p/assets/images/images/005/958/496/micro_square/edgar-cardona-avatar-hera-f.jpg?1494995241")',
-    'url("https://orig00.deviantart.net/7881/f/2008/154/d/d/lineage2_elf_avatar_by_lurker5.jpg")'];
-     let avatarURL = avatars[Math.floor(Math.random() * avatars.length)];
 };
 
 
