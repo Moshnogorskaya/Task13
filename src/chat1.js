@@ -5,17 +5,39 @@ const output = document.querySelector('.chat__output');
 const info = document.querySelector('.info');
 
 const getName = () => {
-  const heroes = ['Superhealer', 'tank007', 'krasotochka', 'lodossteam', 'GoOdHuNtEr', 'vsemkonets', 'SlavaPanchenko'];
+  const heroes = [
+    'Superhealer',
+    'tank007',
+    'krasotochka',
+    'lodossteam',
+    'GoOdHuNtEr',
+    'vsemkonets',
+    'SlavaPanchenko',
+  ];
   return heroes[Math.floor(Math.random() * heroes.length)];
 };
 
 const getColor = () => {
-  const colors = ['#3060ad', '#2fad3a', '#ada42f', '#ad6b2f', '#ad2f89', '#ccc3c9'];
+  const colors = [
+    '#3060ad',
+    '#2fad3a',
+    '#ada42f',
+    '#ad6b2f',
+    '#ad2f89',
+    '#ccc3c9',
+  ];
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
 const getAvatar = () => {
-  const avatars = ['girl_draenei', 'girl_violet-hair', 'girl_white-hair', 'goblin', 'man_draenei', 'troll'];
+  const avatars = [
+    'girl_draenei',
+    'girl_violet-hair',
+    'girl_white-hair',
+    'goblin',
+    'man_draenei',
+    'troll',
+  ];
   return avatars[Math.floor(Math.random() * avatars.length)];
 };
 
@@ -37,10 +59,13 @@ ChatEngine.connect(getName(), {
 
 ChatEngine.on('$.ready', (data) => {
   const infoAvatar = document.createElement('div');
-  infoAvatar.classList.add('info__avatar', `info__avatar_${data.me.state.avatar}`);
+  infoAvatar.classList.add(
+    'info__avatar',
+    `info__avatar_${data.me.state.avatar}`,
+  );
   info.appendChild(infoAvatar);
 
-  window.sendChat = function (e) {
+  const sendChat = () => {
     ChatEngine.global.emit('message', {
       text: input.value,
     });
@@ -48,21 +73,20 @@ ChatEngine.on('$.ready', (data) => {
     return false;
   };
 
-
-  window.checkSubmit = function (e) {
-    if (e.keyCode == 13) {
+  window.checkSubmit = (e) => {
+    if (e.keyCode === 13) {
       sendChat();
     }
   };
 
-
   ChatEngine.global.on('message', (payload) => {
     const date = new Date();
     const div = document.createElement('p');
-    div.innerHTML = `${date.getHours()}:${date.getMinutes()} [${payload.sender.uuid}]: ${payload.data.text}`;
+    div.innerHTML = `${date.getHours()}:${date.getMinutes()} [${
+      payload.sender.uuid
+    }]: ${payload.data.text}`;
     div.style.color = payload.sender.state.color;
     output.appendChild(div);
-    // infoAvatar.classList.add(payload.sender.state.avatar);
   });
 
   ChatEngine.global.onAny((event) => {
