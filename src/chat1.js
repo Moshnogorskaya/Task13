@@ -6,16 +6,16 @@ const chat = document.querySelector('.chat');
 const now = new Date().getTime();
 
 
-let userName = () => {
-  let heroes = ['Superhealer','tank007','krasotochka','lodossteam','GoOdHuNtEr','vsemkonets','SlavaPanchenko'];
-  let name = heroes[Math.floor(Math.random() * heroes.length)];
+const userName = () => {
+  const heroes = ['Superhealer', 'tank007', 'krasotochka', 'lodossteam', 'GoOdHuNtEr', 'vsemkonets', 'SlavaPanchenko'];
+  const name = heroes[Math.floor(Math.random() * heroes.length)];
   console.log(name);
   return name;
 };
 
-const username = ['user', now].join('-');
-//let sendChat = function () {};
-//let checkSubmit =function(){};
+// const username = ['user', now].join('-');
+// let sendChat = function () {};
+// let checkSubmit =function(){};
 
 const ChatEngine = ChatEngineCore.create(
   {
@@ -28,7 +28,7 @@ const ChatEngine = ChatEngineCore.create(
   },
 );
 
-ChatEngine.connect(username, 'auth-key');
+ChatEngine.connect(userName());
 
 ChatEngine.on('$.ready', () => {
   window.sendChat = function (e) {
