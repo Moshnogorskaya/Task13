@@ -73,7 +73,7 @@ ChatEngine.on('$.ready', (data) => {
     return false;
   };
 
-  window.checkSubmit = (e) => {
+  input.onkeypress = (e) => {
     if (e.keyCode === 13) {
       sendChat();
     }
@@ -83,9 +83,9 @@ ChatEngine.on('$.ready', (data) => {
     const date = new Date();
     const div = document.createElement('p');
     const outputText = payload.data.text.replace(/</g, '&lt;');
-    div.innerHTML = `${date.toLocaleTimeString()} [${payload.sender.uuid}]: ${
-      outputText
-    }`;
+    div.innerHTML = `${date.toLocaleTimeString()} [${
+      payload.sender.uuid
+    }]: ${outputText}`;
     div.style.color = payload.sender.state.color;
     output.appendChild(div);
   });
@@ -94,4 +94,3 @@ ChatEngine.on('$.ready', (data) => {
     console.info(event, data);
   });
 });
-

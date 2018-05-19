@@ -10,4 +10,4 @@ import './images/avatars/troll.jpg';
 
 // Other
 import './style.scss';
-import './chat1';
+import './chat';
