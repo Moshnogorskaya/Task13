@@ -11,7 +11,7 @@ module.exports = {
   },
   module: {
     rules: [
-     /* {
+      /* {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
@@ -19,7 +19,7 @@ module.exports = {
             loader: 'eslint-loader',
           },
         ],
-      },*/
+      }, */
       {
         test: /\.html$/,
         use: [

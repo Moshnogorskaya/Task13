@@ -43,9 +43,21 @@ body {
     left: 0;
     padding: 10px 10px 10px 20px;
     flex-direction: column;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  &__message {
+    padding-top: 5px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
+    min-height: 20px;
+    max-height: 70px;
+    display: none;
   }
 }
 
-p {
-  padding-top: 5px;
-}
