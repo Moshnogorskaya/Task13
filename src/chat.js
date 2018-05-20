@@ -88,7 +88,7 @@ ChatEngine.on('$.ready', (data) => {
       payload.sender.uuid
     }]: ${outputText}`;
     div.style.color = payload.sender.state.color;
-    div.style.display = 'flex';
+    div.style.display = 'block';
     output.appendChild(div);
     output.scrollTop = output.scrollHeight;
   });
