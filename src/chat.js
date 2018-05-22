@@ -3,6 +3,7 @@ import ChatEngineCore from 'chat-engine';
 const input = document.querySelector('.chat__input');
 const output = document.querySelector('.chat__output');
 const info = document.querySelector('.info');
+const messagePlace = document.querySelector('.chat__message');
 
 const getName = () => {
   const heroes = [
@@ -73,7 +74,7 @@ ChatEngine.on('$.ready', (data) => {
     return false;
   };
 
-  window.checkSubmit = (e) => {
+  input.onkeypress = (e) => {
     if (e.keyCode === 13) {
       sendChat();
     }
@@ -81,17 +82,18 @@ ChatEngine.on('$.ready', (data) => {
 
   ChatEngine.global.on('message', (payload) => {
     const date = new Date();
-    const div = document.createElement('p');
+    const div = messagePlace.cloneNode(true);
     const outputText = payload.data.text.replace(/</g, '&lt;');
-    div.innerHTML = `${date.toLocaleTimeString()} [${payload.sender.uuid}]: ${
-      outputText
-    }`;
+    div.innerHTML = `${date.toLocaleTimeString()} [${
+      payload.sender.uuid
+    }]: ${outputText}`;
     div.style.color = payload.sender.state.color;
+    div.style.display = 'block';
     output.appendChild(div);
+    output.scrollTop = output.scrollHeight;
   });
 
   ChatEngine.global.onAny((event) => {
     console.info(event, data);
   });
 });
-
